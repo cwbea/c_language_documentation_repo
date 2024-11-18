@@ -1,0 +1,7 @@
+		separator
+  Separators are special symbols used to perform non printable   characters, either by using keyboard combinations, or the
+whitespace character.
+
+Separators types encoding:
+	ascii encoding
+	unicode encoding -- utf-8, utf-16, utf-32

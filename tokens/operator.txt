@@ -1,0 +1,10 @@
+			Operators
+  Operators are symbols.
+
+Types of Operators symbols:
+	arithmetic symbols
+	relational symbols
+	tenary symbols
+	bitwise symbols
+	logical symbols
+	 

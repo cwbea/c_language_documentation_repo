@@ -1,0 +1,6 @@
+		String literals
+   A string literal, also called a string constant, is a sequenceof characters surrounded by double quotes as in "...". 
+
+A string has type ''array of characters storage classic static and is initialized with the given characters.
+
+

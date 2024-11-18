@@ -1,0 +1,6 @@
+		identifiers
+   An identifier is a sequence of letters and digits.
+The first character must be a letter; the underscore also counts as a letter. 
+Uppercase and lowercase letters are different. Identifiers may have any length, and for internal identifiers at least the first 31 characters are significant; some implementations may take more
+ character significance. Internal identifiers include pre-processor macro names and all other names that do not have externa l
+ linkage. Identifiers with external linkage are more restricted.

@@ -1,0 +1,12 @@
+			constants
+   There are several kinds of constants.
+
+ Each has a data type; discussion of the basic data types:
+There are several fundamental types. The standard header <limits.h> describe them, defining the largest and smallest values of
+ each type in the local implementation.
+
+constant:
+	integer-constant
+	character-constant	   
+	floating-constant
+	enumeration-constants
