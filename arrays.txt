@@ -86,7 +86,7 @@ Note : constant strings cannot be assigned to string arrays :
        	reason why will become clear in the next  section on pointers.
 
 
-	THE gets(char array) FUNCTION FOR READING STRINGS
+	THE gets(char array) FUNCTION FOR READING STRINGS  (gets is now fgets)
 
 A string can be read from the keyboard using the function gets : 
 
@@ -187,8 +187,8 @@ This copies the 4th letter of the 42nd name into the char variable ch.
 
 Two dimensional arrays can be used a whole row at a time.  
 
-e.g 	read a name into a  single dimensional array use :
-		gets(SingleName);
+e.g 	to read a name into a  single dimensional array use :
+		fgets(SingleName, 50, stdin);
 
 
 	to print a name in a  single dimensional array use :
@@ -199,7 +199,7 @@ e.g 	read a name into a  single dimensional array use :
 	
 	this would read the name from the keyboard in the 42nd row of the list of names 
 
-i.e if only one set of [] is given after a two dimensional arrays name it effectively
+i.e if only one set of [] is given after a two dimensional arrays name, it effectively
 	means a whole row of an array.
 
 
@@ -211,9 +211,94 @@ Some language use a syntax of two numbers separated by a comma for two dimension
 For example in PASCAL, xyz[3,5] is equivalent to xyz[3][5] in C.
 
 If xyz[3,5] is used in C, the value 3,5 is calculated using the comma operator (explained in the next section ).
-To give the value 5 and so xyz[3,5] is the same as xyz[5], which is a whole row fortunately this often results in
+To give the value 5 and so xyz[3,5] is the same as xyz[5], which is a whole row, fortunately this often results in
 invalid syntax and the C compiler usually gives either an error or a warning if these mistakes are made.
- 
+
+
+	MULTI- DIMENSIONAL ARRAYS
+
+ An array can have more than two dimensions. 
+
+e.g ListOfNames could be an array containing a list of all employees names in a company branch.
+
+But what if there was a need for an array containing several names list, one list for each of 50 
+branches in a company division ?
+This could be declared as :
+
+	char BranchName[50][100][10]; /*first bracket is the source,second brack row, third bracket row*/
+
+This would contain 50 * 100 * 30 = 150000 characters !
+
+Then supposing we wanted an array to contain all these information for 10 different company divisions.
+This would mean an array declared as :
+
+	char CompanyName[10][50][100][30];
+
+This is a 10 * 50 * 100 * 30 = 1,500,000 characters array !
+
+Clearly such arrays are often impratical, as they used so much memory. Furthermore, much of this 
+space will be wasted as not all names are 30 characters long, not all branches will have 100 employees,
+etc. 
+
+
+	INITIALISING MULTI DIMENSIONAL ARRAYS
+
+Multi dimensional arrays can be initialised as a single list of initialiser values :
+
+e.g 	int x[3][4] = {3,2,10,5,6,2};
+	int y[3][4][2] = {3,2,10,5,6,2,13,1,9,10,7};
+
+ This will initialise x[0][0] to x[0][3] with 3,2,10,5 and x[1][0] and x[1][1] to 6 and 2. All remaining array elements
+are set to zero.
+
+y[0][0] and y[0][0][1] will be initialised to 3 and 2, and so on with y[0][1][0] to y[0][3][1] initialised to 
+10,5,6,2,13 and 1. The remaining initialisers are set y[1][0][0], y[1][0][1] and y[1][1][0] to 9,10 and 7.
+
+Alternatively, nested [] can be used to initialise the start of each row :
+e.g int x[3][4] = {{3,2}, {10,5,6}, 2};
+    int y[3][4][2] = {{{3}}, {2,10,5,6,2}, {{13},{1,9},{8}}};
+
+This will initialise : 
+
+    x[0][0] and x[0][1] to 3 and 2,
+    x[1][0],x[1][1] and x[1][2] to 10, 5 and 6,
+    x[2][0] to 2
+
+
+ and 
+
+    y[0][0][0] to 3,
+    y[1][0][0] and y[1][0][1] to 2 and 10,
+    y[1][1][0] and y[1][1][1] to 5 and 6,
+    y[1][2][0] to 2,
+    y[2][0][0] to 13,
+    y[2][1][0] and y[2][1][1] to 1 and 9,
+    y[2][2][0] to 8.
+
+All remaining array elements are set to zero.
+
+Character arrays can have rows initialised with string, providing each row is long enough to take the 
+longest name size plus the null byte terminator. 
+
+e.g 
+
+ListOfNames[100][30] = {
+	"Fred Bloggs",
+	"Joe Brown",
+	"Ferdinard Jr Joseph Prince"
+	};
+
+BranchNames[50][100][30] = {
+	{"Fred Bloggs", "Joe Brown"},
+	{"Ferdinard Jr Joseph Prince"},
+	{"A.Ace", "B.Beeston", "C.Cedar"},
+	};
+
+This will initialise the first three rows of ListOfNames to the names shown. The first two names of BranchNames[0]
+are initialised to  "Fred Bloggs" and "Joe Brown", and similarly the first name of BranchNames[1], and the first three
+names of BranchNames[2] are also initialised. All other array elements  are set to null characters. 
+	
+
 
      
 
